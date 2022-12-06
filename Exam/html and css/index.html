@@ -1,12 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profiletome</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://kit.fontawesome.com/b1c5e72896.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
+
+    <nav>
+        <div class="nav-left">
+            <img src="images/logo.png" class="logo">
+        </div>
+
+        <div class="nav-right">
+            <div class="nav-user-icon">
+                <img src="images/profile-pic.png">
+            </div>
+        </div>
+
+        <!-- ---------------dropdown-menu---------------- -->
+        <div class="settings-menu">
+            <!-- if logged -->
+            <div class="settings-menu-inner">
+                <div class="settings-links">
+                    <img src="images/profile-pic.png" alt="">
+                    <a href="#">Profile</a>
+                </div>
+                <hr></hr>
+                <div class="settings-links">
+                    <img src="images/logout.png">
+                    <a href="#">Logout</a>
+                </div>
+                <!-- if logged out -->
+                <!-- <div class="settings-links">
+                    <img src="images/no-pfp.png" alt="">
+                    <a href="#">Login</a>
+                </div>
+                <hr></hr>
+                <div class="settings-links">
+                    <img src="images/logout.png">
+                    <a href="#">Register</a>
+                </div> -->
+            </div>
+        </div>
+
+
+    </nav>
+
+    <div class="container">
+        <!-- left-sidebar -------------------------------------------------------------------- -->
+        <div class="left-sidebar">
+            <div class="imp-links">
+                <a href="#"><img src="images/news.png">Latest News</a>
+                <a href="#"><img src="images/friends.png">Friends</a>
+            </div>
+            <div class="shortcut-links">
+                <p>Your Shortcuts</p>
+                <a href="#"><img src="images/shortcut-1.png">Web Developers</a>
+                <a href="#"><img src="images/shortcut-2.png">Web Design Course</a>
+                <a href="#"><img src="images/shortcut-3.png">Full Stack Development</a>
+                <a href="#"><img src="images/shortcut-4.png">Website Experts</a>
+            </div>
+        </div>
+        <!-- ---------------main-content------------------------------ -->
+        <div class="main-content">
+
+            <div class="write-post-container">
+                <div class="user-profile">
+                    <img src="images/profile-pic.png">
+                    <div>
+                        <p>John Nicholson</p>
+                    </div>
+                </div>
+
+                <div class="post-input-container">
+                    <div class="add-post-links">
+                        <a href="#">
+                            <img src="images/photo.png">
+                            <p>Post</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="post-container">
+                <div class="user-profile">
+                    <img src="images/profile-pic.png">
+                    <div>
+                        <p>John Nicholson</p>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                </div>
+                <p class="post-text">Caption</p>
+                <img class="post-img" src="images/feed-image-1.png">
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div>
+                            <img src="images/like-blue.png"> 120
+                        </div>
+                    </div>
+                </div>
+                <!-- if user owns the post -->
+                <div class="owner-buttons">
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="user-profile">
+                    <img src="images/profile-pic.png">
+                    <div>
+                        <p>John Nicholson</p>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                </div>
+                <p class="post-text">Caption</p>
+                <img class="post-img" src="images/feed-image-1.png">
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div>
+                            <img src="images/like-blue.png"> 120
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="user-profile">
+                    <img src="images/profile-pic.png">
+                    <div>
+                        <p>John Nicholson</p>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                </div>
+                <p class="post-text">Caption</p>
+                <img class="post-img" src="images/feed-image-1.png">
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div>
+                            <img src="images/like-blue.png"> 120
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ----------------------right-sidebar--------------- -->
+        <div class="right-sidebar">
+
+            <div class="sidebar-title">
+                <h4>Friends</h4>
+            </div>
+
+            <div class="online-list">
+                <div class="online">
+                    <img src="images/member-1.png">
+                    <p>Alison Mina</p>
+                </div>
+            </div>
+            <div class="online-list">
+                <div class="online">
+                    <img src="images/member-2.png">
+                    <p>Name Name</p>
+                </div>
+            </div>
+            <div class="online-list">
+                <div class="online">
+                    <img src="images/member-3.png">
+                    <p>Name Name</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Copyright 2022 - Easy Tutorials Youtube | SoftUni</p>
+    </div>
+
 </body>
+
 </html>
