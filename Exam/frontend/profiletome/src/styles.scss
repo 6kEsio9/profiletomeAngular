@@ -172,7 +172,7 @@ nav{
 }
 
 .post-container{
-    width: 90%;
+    width: 710px;
     background: #fff;
     border-radius: 6px;
     padding: 20px;
@@ -299,7 +299,7 @@ nav{
 }
 
 .profile-container {
-    padding: 20px 15%;
+    padding: 25px 15%;
     color: #626262;
 }
 
@@ -444,12 +444,12 @@ nav{
 .friends-box {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-gap: 10px;
+    grid-gap: 0px;
     margin-top: 15px;
 }
 
 .friends-box div img {
-    width: 100%;
+    width: 120px;
     cursor: pointer;
     padding-bottom: 20px;
 }

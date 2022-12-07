@@ -18,6 +18,12 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     AuthRouter,
     AppRoutingModule
+  ],
+  exports: [
+    LoginComponent,
+    RegisterComponent,
+    LogoutComponent,
+    ProfileComponent
   ]
 })
 export class AuthModule { }
