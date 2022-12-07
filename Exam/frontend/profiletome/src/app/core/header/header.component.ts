@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  dropDownMenu = false;
+
+  toggleDropDown(){
+    this.dropDownMenu = !this.dropDownMenu;
+  }
+
   constructor() { }
 
   ngOnInit(): void {

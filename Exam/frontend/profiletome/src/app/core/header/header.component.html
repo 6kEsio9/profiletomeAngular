@@ -1,36 +1,36 @@
 <nav>
     <div class="nav-left">
-        <img src="./logo.png" class="logo">
+        <a routerLink="/"><img src="../../images/logo.png" class="logo"></a>
     </div>
 
     <div class="nav-right">
-        <div class="nav-user-icon">
-            <img src="images/profile-pic.png">
+        <div class="nav-user-icon" (click)="toggleDropDown()">
+            <img src="../../images/profile-pic.png">
         </div>
     </div>
 
     <!-- ---------------dropdown-menu---------------- -->
-    <div class="settings-menu">
+    <div class="settings-menu" *ngIf="dropDownMenu">
         <!-- if logged -->
         <div class="settings-menu-inner">
             <div class="settings-links">
-                <img src="images/profile-pic.png" alt="">
-                <a href="#">Profile</a>
+                <img src="../../../images/profile-pic.png" alt="">
+                <a routerLink="/profile/1">Profile</a>
             </div>
             <hr>
             <div class="settings-links">
-                <img src="./logout.png">
-                <a href="#">Logout</a>
+                <img src="../../../images/logout.png">
+                <a routerLink="users/logout">Logout</a>
             </div>
             <!-- if logged out -->
             <!-- <div class="settings-links">
                 <img src="images/no-pfp.png" alt="">
-                <a href="#">Login</a>
+                <a routerLink="/users/login">Login</a>
             </div>
-            <hr></hr>
+            <hr>
             <div class="settings-links">
                 <img src="images/logout.png">
-                <a href="#">Register</a>
+                <a routerLink="/users/register">Register</a>
             </div> -->
         </div>
     </div>
