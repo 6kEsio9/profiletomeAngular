@@ -3,7 +3,7 @@ const userService = require('../services/userService');
 exports.getUsers = async (req, res) => {
     try{
         const users = await userService.getAll();
-        res.status(200).json({ users });
+        res.status(200).json( users );
     } catch(error){
         res.status(404);
         res.send(error);
@@ -15,7 +15,7 @@ exports.getUser = async (req, res) => {
 
     try{
         const user = await userService.getOne(userId);
-        res.status(200).json({ user });
+        res.status(200).json( user );
     }catch(error){
         res.status(404);
         res.send(error);

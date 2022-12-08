@@ -21,7 +21,7 @@ exports.getPosts = async (req, res) => {
 exports.createPost = async (req, res) => {
     const data = req.body;
 
-    const token = await jwtVerify(req.headers['x-authorization'], secret);
+    // const token = await jwtVerify(req.headers['x-authorization'], secret);
 
     data.owner = token._id;
 
@@ -65,7 +65,7 @@ exports.getOnePost = async(req, res) => {
 
     try{
         const post = await postService.getOne(postId);
-        res.status(200).json({ post });
+        res.status(200).json( post );
     }catch(error) {
         res.status(404);
         res.send(error);
