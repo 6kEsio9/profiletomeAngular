@@ -8,6 +8,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { LikeComponent } from './like/like.component';
 import { PostRouter } from './post-routing-module';
 import { AppRoutingModule } from '../app-routing.module';
+import { PostComponent } from './post/post.component';
 
 
 
@@ -16,13 +17,17 @@ import { AppRoutingModule } from '../app-routing.module';
     CreateComponent,
     EditComponent,
     DeleteComponent,
-    LikeComponent
+    LikeComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     PostRouter,
     AppRoutingModule
+  ],
+  exports: [
+    PostComponent
   ]
 })
 export class PostModule { }

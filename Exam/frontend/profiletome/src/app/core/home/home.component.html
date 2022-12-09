@@ -35,67 +35,9 @@
         </div>
 
 
-        <div class="post-container">
-            <div class="user-profile">
-                <img src="/assets/images/profile-pic.png">
-                <div>
-                    <p>John Nicholson</p>
-                </div>
-                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-            </div>
-            <p class="post-text">Caption</p>
-            <img class="post-img" src="/assets/images/feed-image-1.png">
-            <div class="post-row">
-                <div class="activity-icons">
-                    <div>
-                        <img src="/assets/images/like-blue.png"> 120
-                    </div>
-                </div>
-            </div>
-            <!-- if user owns the post -->
-            <div class="owner-buttons">
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
-            </div>
-        </div>
-
-        <div class="post-container">
-            <div class="user-profile">
-                <img src="/assets/images/profile-pic.png">
-                <div>
-                    <p>John Nicholson</p>
-                </div>
-                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-            </div>
-            <p class="post-text">Caption</p>
-            <img class="post-img" src="/assets/images/feed-image-1.png">
-            <div class="post-row">
-                <div class="activity-icons">
-                    <div>
-                        <img src="/assets/images/like-blue.png"> 120
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="post-container">
-            <div class="user-profile">
-                <img src="/assets/images/profile-pic.png">
-                <div>
-                    <p>John Nicholson</p>
-                </div>
-                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-            </div>
-            <p class="post-text">Caption</p>
-            <img class="post-img" src="/assets/images/feed-image-1.png">
-            <div class="post-row">
-                <div class="activity-icons">
-                    <div>
-                        <img src="/assets/images/like-blue.png"> 120
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ng-container *ngFor="let post of postList">
+            <app-post [post]="post"></app-post>
+        </ng-container>
 
     </div>
     <!-- ----------------------right-sidebar--------------- -->

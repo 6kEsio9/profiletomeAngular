@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPost } from '../shared/interfaces/post'; 
+import { IPost } from './shared/interfaces';
 import { environment } from 'src/environments/environment';
 
 const apiUrl = environment.apiURL;

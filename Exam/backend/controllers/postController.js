@@ -21,7 +21,7 @@ exports.getPosts = async (req, res) => {
 exports.createPost = async (req, res) => {
     const data = req.body;
 
-    // const token = await jwtVerify(req.headers['x-authorization'], secret);
+    const token = await jwtVerify(req.cookies['user'], secret);
 
     data.owner = token._id;
 

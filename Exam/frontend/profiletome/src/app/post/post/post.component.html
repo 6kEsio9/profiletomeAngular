@@ -1,0 +1,22 @@
+<div class="post-container">
+    <div class="user-profile">
+        <img src="{{owner.profileImg}}">
+        <div>
+            <p>{{owner.fullName}}</p>
+        </div>
+    </div>
+    <p class="post-text">{{post.caption}}</p>
+    <img class="post-img" src="{{post.imageUrl}}">
+    <div class="post-row">
+        <div class="activity-icons">
+            <div>
+                <img src="/assets/images/like-blue.png"> 120
+            </div>
+        </div>
+    </div>
+    <!-- if user owns the post -->
+    <div class="owner-buttons">
+        <a routerLink="/posts/edit/{{post._id}}">Edit</a>
+        <a href="/posts/delete/{{post._id}}">Delete</a>
+    </div>
+</div>

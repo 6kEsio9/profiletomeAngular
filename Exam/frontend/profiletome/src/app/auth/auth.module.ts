@@ -6,6 +6,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthRouter } from './auth-routing-module';
 import { AppRoutingModule } from '../app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     AuthRouter,
     AppRoutingModule
   ],
@@ -23,7 +26,10 @@ import { AppRoutingModule } from '../app-routing.module';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class AuthModule { }

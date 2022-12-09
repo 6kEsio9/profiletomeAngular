@@ -14,7 +14,7 @@ router.get('/posts/like/:userId/:postId', postController.likePost)
 
 router.post('/users/register', userController.registerUser);
 router.post('/users/login', userController.loginUser);
-router.post('/posts/create', postController.createPost);
+router.post('/posts/create', isAuth, postController.createPost);
 
 router.put('/posts/edit/:id', isAuth, postController.editPost);
 router.delete('/posts/delete/:id', postController.deletePost);

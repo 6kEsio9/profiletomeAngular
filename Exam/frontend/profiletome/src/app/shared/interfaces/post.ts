@@ -1,6 +1,7 @@
-export interface IPost{
+export interface IPost {
+    _id: string;
     imageUrl: string;
     caption: string;
-    owner: object;
+    owner: string;
     likedUsers: string[]
 }
