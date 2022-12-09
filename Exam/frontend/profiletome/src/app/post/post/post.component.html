@@ -10,7 +10,7 @@
     <div class="post-row">
         <div class="activity-icons">
             <div>
-                <img src="/assets/images/like-blue.png"> 120
+                <a routerLink="/post/like/{{post._id}}"><img src="/assets/images/like-blue.png"></a> {{post.likedUsers.length}}
             </div>
         </div>
     </div>

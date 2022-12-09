@@ -36,6 +36,6 @@
     </div>
 </div>
 
-<ng-container class="post-container" *ngFor="let post of postList">
-    <app-post [post]="post"></app-post>
+<ng-container *ngFor="let post of postList">
+    <app-post class="post-container" [post]="post"></app-post>
 </ng-container>
