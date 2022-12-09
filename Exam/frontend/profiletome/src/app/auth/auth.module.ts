@@ -8,6 +8,7 @@ import { AuthRouter } from './auth-routing-module';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { PostModule } from '../post/post.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthService } from './auth.service';
   ],
   imports: [
     CommonModule,
+    PostModule,
     HttpClientModule,
     AuthRouter,
     AppRoutingModule

@@ -1,12 +1,12 @@
 <div class="profile-container">
-    <img class="cover-img" src="/assets/images/cover.png" alt="coverImg">
+    <img class="cover-img" src="{{user?.profileCoverImg}}" alt="coverImg">
     <div class="profile-details">
         <div class="pd-left">
             <div class="pd-row">
-                <img class="pfp" src="/assets/images/profile.png" alt="profileImg">
+                <img class="pfp" src="{{user?.profileImg}}" alt="profileImg">
                 <div>
-                    <h3>Jack Nicholson</h3>
-                    <p>120 Friends</p>
+                    <h3>{{user?.fullName}}</h3>
+                    <p>{{user?.friends?.length}} Friends</p>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="title-box">
                 <h3>Friends</h3>
             </div>
-            <p>120</p>
+            <p>{{user?.friends?.length}}</p>
             <div class="friends-box">
                 <div><img src="/assets/images/member-1.png"></div>
                 <div><img src="/assets/images/member-2.png"></div>
@@ -36,98 +36,6 @@
     </div>
 </div>
 
-<div class="post-container">
-    <div class="user-profile">
-        <img src="/assets/images/profile.png" alt="image">
-        <div>
-            <p>John Nicholson</p>
-        </div>
-        <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-    </div>
-    <p class="post-text">Caption</p>
-    <img class="post-img" src="/assets/images/feed-image-1.png">
-    <div class="post-row">
-        <div class="activity-icons">
-            <div>
-                <img src="/assets/images/like-blue.png"> 120
-            </div>
-        </div>
-    </div>
-    <!-- if user owns the post -->
-    <div class="owner-buttons">
-        <a href="#">Edit</a>
-        <a href="#">Delete</a>
-    </div>
-</div>
-
-<div class="post-container">
-    <div class="user-profile">
-        <img src="/assets/images/profile.png">
-        <div>
-            <p>John Nicholson</p>
-        </div>
-        <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-    </div>
-    <p class="post-text">Caption</p>
-    <img class="post-img" src="/assets/images/feed-image-1.png">
-    <div class="post-row">
-        <div class="activity-icons">
-            <div>
-                <img src="/assets/images/like-blue.png"> 120
-            </div>
-        </div>
-    </div>
-    <!-- if user owns the post -->
-    <div class="owner-buttons">
-        <a href="#">Edit</a>
-        <a href="#">Delete</a>
-    </div>
-</div>
-
-<div class="post-container">
-    <div class="user-profile">
-        <img src="/assets/images/profile.png" alt="image">
-        <div>
-            <p>John Nicholson</p>
-        </div>
-        <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-    </div>
-    <p class="post-text">Caption</p>
-    <img class="post-img" src="/assets/images/feed-image-1.png">
-    <div class="post-row">
-        <div class="activity-icons">
-            <div>
-                <img src="/assets/images/like-blue.png"> 120
-            </div>
-        </div>
-    </div>
-    <!-- if user owns the post -->
-    <div class="owner-buttons">
-        <a href="#">Edit</a>
-        <a href="#">Delete</a>
-    </div>
-</div>
-
-<div class="post-container">
-    <div class="user-profile">
-        <img src="/assets/images/profile.png" alt="image">
-        <div>
-            <p>John Nicholson</p>
-        </div>
-        <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-    </div>
-    <p class="post-text">Caption</p>
-    <img class="post-img" src="/assets/images/feed-image-1.png">
-    <div class="post-row">
-        <div class="activity-icons">
-            <div>
-                <img src="/assets/images/like-blue.png"> 120
-            </div>
-        </div>
-    </div>
-    <!-- if user owns the post -->
-    <div class="owner-buttons">
-        <a href="#">Edit</a>
-        <a href="#">Delete</a>
-    </div>
-</div>
+<ng-container class="post-container" *ngFor="let post of postList">
+    <app-post [post]="post"></app-post>
+</ng-container>

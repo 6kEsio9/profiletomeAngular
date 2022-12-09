@@ -9,6 +9,7 @@ import { LikeComponent } from './like/like.component';
 import { PostRouter } from './post-routing-module';
 import { AppRoutingModule } from '../app-routing.module';
 import { PostComponent } from './post/post.component';
+import { ApiService } from '../api.service';
 
 
 
@@ -28,6 +29,9 @@ import { PostComponent } from './post/post.component';
   ],
   exports: [
     PostComponent
+  ],
+  providers: [
+    ApiService
   ]
 })
 export class PostModule { }
