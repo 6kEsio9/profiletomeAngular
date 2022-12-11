@@ -9,7 +9,10 @@ import { EmailDirective } from './validators/email.directive';
     EmailDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+  ],
+  exports: [
+    EmailDirective
   ]
 })
 export class SharedModule { }

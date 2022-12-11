@@ -19,4 +19,12 @@ export class AuthService {
   loadOneUser(userId: string){
     return this.httpClient.get<IUser>(`${apiUrl}/users/${userId}`);
   }
+
+  register(fullName: string, email: string, password: string, repeatPassword: string, profileImg: string, profileCoverImg: string){
+    return this.httpClient.post<any>(apiUrl + '/users/register', { fullName, email, password, repeatPassword, profileImg, profileCoverImg});
+  }
+
+  login(email: string, password: string){
+    return this.httpClient.post<any>(apiUrl + '/users/login', { email, password });
+  }
 }

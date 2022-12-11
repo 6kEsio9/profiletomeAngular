@@ -1,73 +1,96 @@
 <section id="register-page" class="register">
-    <form id="register-form">
-      <fieldset>
-        <legend>Register Form</legend>
-        <p class="field">
-          <label for="email">Full Name</label>
-          <span class="input">
-            <input
-              type="text"
-              name="fullName"
-              id="fn"
-              placeholder="Michael Jordan"
-            />
-          </span>
+  <form [formGroup]="form" id="register-form" (ngSubmit)="registerHandler()">
+    <fieldset>
+      <legend>Register Form</legend>
+      <p class="field">
+        <label for="email">Full Name</label>
+        <span class="input">
+          <input type="text" name="fullName" id="fn" placeholder="Michael Jordan" required formControlName="fullName"
+            minlength="5" />
+        </span>
+      </p>
+
+      <ng-container *ngIf="form.get('fullName')?.touched">
+        <p class="error" *ngIf="form.get('fullName')?.errors?.['required']">
+          Full name is required!
         </p>
-        <p class="field">
-          <label for="email">Email</label>
-          <span class="input">
-            <input type="text" name="email" id="email" placeholder="Email" />
-          </span>
+        <p class="error" *ngIf="form.get('fullName')?.errors?.['minlength']">
+          Full name is not valid!
         </p>
+      </ng-container>
+
+      <p class="field">
+        <label for="email">Email</label>
+        <span class="input">
+          <input type="text" name="email" id="email" placeholder="Email" formControlName="email" required />
+        </span>
+      </p>
+
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
+          Email is not valid!
+        </p>
+      </ng-container>
+
+      <ng-container formGroupName="pass">
         <p class="field">
           <label for="password">Password</label>
           <span class="input">
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-            />
+            <input type="password" name="password" id="password" placeholder="Password" formControlName="password"
+              required minlength="8" />
           </span>
         </p>
+
+        <ng-container *ngIf="form.get('pass')?.get('password')?.touched">
+          <p class="error" *ngIf="form.get('pass')?.get('password')?.errors?.['required']">
+            Password is required!
+          </p>
+          <p class="error" *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']">
+            Password should be at least 8 symbols!
+          </p>
+        </ng-container>
+
         <p class="field">
           <label for="repeat-pass">Repeat Password</label>
           <span class="input">
-            <input
-              type="password"
-              name="confirmPass"
-              id="repeat-pass"
-              placeholder="Repeat Password"
-            />
+            <input type="password" formControlName="repeatPassword" name="confirmPass" id="repeat-pass" placeholder="Repeat Password" />
           </span>
         </p>
-        <p class="field">
-          <label for="repeat-pass">Profile Picture</label>
-          <span class="input">
-            <input
-              type="text"
-              name="profileImg"
-              id="pfp"
-              placeholder="http://"
-            />
-          </span>
+
+
+        <p class="error"
+          *ngIf="form.get('pass')?.errors?.['sameValueGroupValidator'] && form.get('pass')?.get('repeatPassword')?.touched">
+          Passwords don't match!
         </p>
-        <p class="field">
-          <label for="email">Profile Cover Picture</label>
-          <span class="input">
-            <input
-              type="text"
-              name="profileCoverImg"
-              id="pf-cover"
-              placeholder="http://"
-            />
-          </span>
-        </p>
-        <input
-          class="button submit"
-          type="submit"
-          value="Register"
-        />
-      </fieldset>
-    </form>
-  </section>
+
+      </ng-container>
+      
+      <p class="field">
+        <label for="repeat-pass">Profile Picture</label>
+        <span class="input">
+          <input type="text" required formControlName="profileImg" name="profileImg" id="pfp" placeholder="http://" />
+        </span>
+      </p>
+
+      <p class="error" *ngIf="form.get('profileImg')?.touched && form.get('profileImg')?.errors?.['required']">
+        Profile picture is required!
+      </p>
+
+      <p class="field">
+        <label for="email">Profile Cover Picture</label>
+        <span class="input">
+          <input type="text" formControlName="profileCoverImg" name="profileCoverImg" id="pf-cover" placeholder="http://" />
+        </span>
+      </p>
+
+      <p class="error" *ngIf="form.get('profileCoverImg')?.touched && form.get('profileCoverImg')?.errors?.['required']">
+        Profile cover picture is required!
+      </p>
+
+      <input class="button submit" type="submit" value="Register" [disabled]="form.invalid" />
+    </fieldset>
+  </form>
+</section>

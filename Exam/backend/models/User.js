@@ -9,11 +9,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: true,
-        validate: {
-            validator: function (v) {
-                return /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(v);
-            }
-        },
     },
     password: {
         type: String,

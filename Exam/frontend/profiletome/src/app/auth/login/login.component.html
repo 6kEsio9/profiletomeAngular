@@ -1,13 +1,22 @@
 <section id="login-page" class="login">
-    <form id="login-form">
+    <form #form="ngForm" id="login-form" (ngSubmit)="loginHandler(form)">
       <fieldset>
         <legend>Login Form</legend>
         <p class="field">
           <label for="email">Email</label>
           <span class="input">
-            <input type="text" name="email" id="email" placeholder="Email" />
+            <input type="text" name="email" id="email" placeholder="Email" #emailInput="ngModel" ngModel required [appEmail]="['bg', 'com']">
           </span>
         </p>
+        <ng-container *ngIf="emailInput.touched">
+          <p class="error" *ngIf="emailInput.errors?.['required']">
+            Email is required!
+          </p>
+          <p class="error" *ngIf="emailInput.errors?.['appEmailValidator']">
+            Email is not valid!
+          </p>
+        </ng-container>
+
         <p class="field">
           <label for="password">Password</label>
           <span class="input">
@@ -16,10 +25,30 @@
               name="password"
               id="password"
               placeholder="Password"
+              #passwordInput="ngModel"
+              ngModel
+              required
+              [minlength]="8"
             />
           </span>
         </p>
-        <input class="button submit" type="submit" value="Login" />
+
+        <ng-container *ngIf="passwordInput.touched">
+          <p class="error" *ngIf="passwordInput.errors?.['required']">
+            Password is required!
+          </p>
+          <p class="error" *ngIf="passwordInput.errors?.['appEmailValidator']">
+            Password should be at least 8 symbols!
+          </p>
+        </ng-container>
+
+        <ng-container *ngIf="error">
+          <p class="error">
+            {{error}}
+          </p>
+        </ng-container>
+
+        <input class="button submit" type="submit" value="Login" [disabled]="form.invalid" />
       </fieldset>
     </form>
   </section>
