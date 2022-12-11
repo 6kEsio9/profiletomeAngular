@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
 
   error: string | null = null;
 
-  constructor(private authSerivce: AuthService, private router: Router) { }
+  constructor(private authSerivce: AuthService, private router: Router, private cookieService: CookieService) { }
 
   @ViewChild(
     NgForm,
@@ -27,6 +28,7 @@ export class LoginComponent {
     this.authSerivce.login(email, password).subscribe({
       next: (value) => {
         console.log(value);
+        this.cookieService.set('user', value.token, value.fullName, value.email, value.profileImg, value.profileCoverImg, value.friends);
         this.router.navigate(['/'])
       },
       error: (err) => {
