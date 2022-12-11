@@ -9,6 +9,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { PostModule } from '../post/post.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { PostModule } from '../post/post.module';
     PostModule,
     HttpClientModule,
     AuthRouter,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     LoginComponent,
