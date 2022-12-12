@@ -26,10 +26,9 @@ export class LoginComponent {
     }
     const { email, password } = form.value;
     this.authSerivce.login(email, password).subscribe({
-      next: (value) => {
-        console.log(value);
-        this.cookieService.set('user', value.token, value.fullName, value.email, value.profileImg, value.profileCoverImg, value.friends);
-        this.router.navigate(['/'])
+      next: ({ token, _id, email, fullName, profileImg, friends, profileCoverImg }) => {
+        this.cookieService.set('user', JSON.stringify({ token, _id, email, fullName, profileImg, friends, profileCoverImg }));
+        this.router.navigate(['/']);
       },
       error: (err) => {
         this.error = err.error.message;
