@@ -9,14 +9,22 @@ import { IUser } from 'src/app/shared/interfaces';
 })
 export class FriendComponent implements OnInit {
 
-  @Input() friends: string[] | null = null;
+  @Input() friendId: string = "";
 
   friend: IUser | null = null;
-  
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    
+    this.authService.loadOneUser(this.friendId).subscribe({
+      next: (value) => {
+        console.log(value);
+        this.friend = value;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 
 }
