@@ -11,23 +11,25 @@ import { AuthService } from './auth.service';
 import { PostModule } from '../post/post.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { FriendComponent } from './friend/friend.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    FriendComponent
   ],
   imports: [
     CommonModule,
     PostModule,
     HttpClientModule,
     AuthRouter,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
   ],
   exports: [
     LoginComponent,

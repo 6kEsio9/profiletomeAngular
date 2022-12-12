@@ -11,9 +11,9 @@
             </div>
         </div>
         <div class="pd-right">
-            <button type="button"><img src="/assets/images/add-friends.png" alt="addfriendsImg">Add Friend</button>
+                <button *ngIf="!isOwner && !isFriend || !auth" type="button"><img src="/assets/images/add-friends.png" alt="addfriendsImg">Add Friend</button>
         </div>
-    </div> 
+    </div>
 </div>
 
 <div class="profile-info">
@@ -23,14 +23,8 @@
                 <h3>Friends</h3>
             </div>
             <p>{{user?.friends?.length}}</p>
-            <div class="friends-box">
-                <div><img src="/assets/images/member-1.png"></div>
-                <div><img src="/assets/images/member-2.png"></div>
-                <div><img src="/assets/images/member-3.png"></div>
-                <div><img src="/assets/images/member-4.png"></div>
-                <div><img src="/assets/images/member-5.png"></div>
-                <div><img src="/assets/images/member-6.png"></div>
-                <div><img src="/assets/images/member-7.png"></div>
+            <div class="friends-box" *ngFor="let friend of user?.friends">
+                <app-friend [friendId]="friend"></app-friend>
             </div>
         </div>
     </div>
