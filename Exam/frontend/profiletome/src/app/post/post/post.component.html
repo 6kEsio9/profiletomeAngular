@@ -10,13 +10,13 @@
     <div class="post-row">
         <div class="activity-icons">
             <div>
-                <a routerLink="/post/like/{{post._id}}"><img src="/assets/images/like-blue.png"></a> {{post.likedUsers.length}}
+                <a (click)="likePost()"><img src="/assets/images/like-blue.png"></a> {{post.likedUsers.length}}
             </div>
         </div>
     </div>
     <!-- if user owns the post -->
-    <div class="owner-buttons">
-        <a routerLink="/post/edit/{{post._id}}">Edit</a>
-        <a href="/post/delete/{{post._id}}">Delete</a>
+    <div class="owner-buttons" *ngIf="isOwner">
+        <a routerLink="/posts/edit/{{post._id}}">Edit</a>
+        <a href="/posts/delete/{{post._id}}">Delete</a>
     </div>
 </div>

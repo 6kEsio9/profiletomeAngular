@@ -17,16 +17,27 @@
     <div class="main-content">
 
         <div class="write-post-container">
-            <div class="user-profile">
-                <img src="/assets/images/profile-pic.png">
-                <div>
-                    <p>John Nicholson</p>
+            <ng-container *ngIf="user">
+                <div class="user-profile">
+                    <img src="{{user.profileImg}}">
+                    <div>
+                        <p>{{user.fullName}}</p>
+                    </div>
                 </div>
-            </div>
+            </ng-container>
+
+            <ng-container *ngIf="!user">
+                <div class="user-profile">
+                    <img src="/assets/images/no-pfp.png">
+                    <div>
+                        <p>Login to make a post!</p>
+                    </div>
+                </div>
+            </ng-container>
 
             <div class="post-input-container">
                 <div class="add-post-links">
-                    <a routerLink="/post/create">
+                    <a routerLink="/posts/create">
                         <img src="/assets/images/photo.png">
                         <p>Post</p>
                     </a>
@@ -36,7 +47,7 @@
 
 
         <ng-container *ngFor="let post of postList">
-            <app-post [post]="post"></app-post>
+            <app-post [user]="user" [isOwner]="isOwner" [post]="post"></app-post>
         </ng-container>
 
     </div>
@@ -47,6 +58,9 @@
             <h4>Friends</h4>
         </div>
 
+        <ng-container *ngIf="user && user.friends.length > 0">
+            <app-friend [friends]="user.friends"></app-friend>
+        </ng-container>
         <div class="online-list">
             <div class="online">
                 <img src="/assets/images/member-1.png">
@@ -68,4 +82,3 @@
 
     </div>
 </div>
-

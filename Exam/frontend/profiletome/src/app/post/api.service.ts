@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPost } from '../shared/interfaces/post'; 
+import { IPost } from '../shared/interfaces/post';
 import { environment } from 'src/environments/environment';
 
 const apiUrl = environment.apiURL;
@@ -12,7 +12,15 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  loadPosts(){
+  loadPosts() {
     return this.httpClient.get<IPost[]>(`${apiUrl}/posts`);
+  }
+
+  loadOnePost(postId: any) {
+    return this.httpClient.get<IPost>(`${apiUrl}/posts/${postId}`);
+  }
+
+  likePost(userId: any, postId: any) {
+    return this.httpClient.get<any>(`${apiUrl}/posts/like/${userId}/${postId}`);
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { appEmailValidator, sameValueGroupValidator } from 'src/app/shared/validators';
 import { AuthService } from '../auth.service';
 
@@ -12,6 +13,8 @@ import { AuthService } from '../auth.service';
 export class RegisterComponent {
 
   //fullName, email, password, repeatPassword, profileImg, profileCoverImg
+
+  error: string | null = null;
 
   form = this.fb.group({
     fullName: ['', [Validators.required, Validators.minLength(5)]],
@@ -26,12 +29,19 @@ export class RegisterComponent {
     profileCoverImg: ['', [Validators.required]]
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private cookieService: CookieService) { }
 
   registerHandler(){
     if(this.form.invalid) { return;}
     const { fullName, email, pass: {password, repeatPassword} = {}, profileImg, profileCoverImg} = this.form.value;
-    this.authService.register(fullName!, email!, password!, repeatPassword!, profileImg!, profileCoverImg!).subscribe(res => console.log(res));
-    this.router.navigate(['/']);
+    this.authService.register(fullName!, email!, password!, repeatPassword!, profileImg!, profileCoverImg!).subscribe({
+      next: ({ token, _id, email, fullName, profileImg, friends, profileCoverImg }) => {
+        this.cookieService.set('user', JSON.stringify({ token, _id, email, fullName, profileImg, friends, profileCoverImg }));
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        this.error = err.error.message;
+      }
+    });
   }
 }

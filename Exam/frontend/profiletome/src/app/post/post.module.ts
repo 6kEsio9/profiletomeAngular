@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
-import { LikeComponent } from './like/like.component';
 import { PostRouter } from './post-routing-module';
 import { AppRoutingModule } from '../app-routing.module';
 import { PostComponent } from './post/post.component';
@@ -18,7 +17,6 @@ import { ApiService } from '../api.service';
     CreateComponent,
     EditComponent,
     DeleteComponent,
-    LikeComponent,
     PostComponent
   ],
   imports: [

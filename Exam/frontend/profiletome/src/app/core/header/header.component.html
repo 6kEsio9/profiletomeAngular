@@ -16,7 +16,7 @@
         <div class="settings-menu-inner">
             <ng-container *ngIf="user">
                 <div class="settings-links">
-                    <img src="/assets/images/profile-pic.png" alt="">
+                    <img src="{{user.profileImg}}" alt="">
                     <a routerLink="/profile/{{user._id}}">Profile</a>
                 </div>
                 <hr>

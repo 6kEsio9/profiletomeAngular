@@ -90,6 +90,10 @@
         Profile cover picture is required!
       </p>
 
+      <p class="error" *ngIf="error">
+        {{error}}
+      </p>
+
       <input class="button submit" type="submit" value="Register" [disabled]="form.invalid" />
     </fieldset>
   </form>
