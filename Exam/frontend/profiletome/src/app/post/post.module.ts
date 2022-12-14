@@ -24,9 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HttpClientModule,
     PostRouter,
-    AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   exports: [
     PostComponent

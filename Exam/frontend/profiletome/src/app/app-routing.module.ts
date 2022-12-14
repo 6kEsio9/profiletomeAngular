@@ -5,6 +5,7 @@ import { HomeComponent } from './core/home/home.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: HomeComponent
   }
 ];

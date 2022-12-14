@@ -12,6 +12,7 @@ import { PostModule } from '../post/post.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FriendComponent } from './friend/friend.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,10 @@ import { FriendComponent } from './friend/friend.component';
     CommonModule,
     PostModule,
     HttpClientModule,
-    AuthRouter,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    AuthRouter,
     AppRoutingModule
   ],
   exports: [
@@ -38,7 +39,8 @@ import { FriendComponent } from './friend/friend.component';
     ProfileComponent,
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ]
 })
 export class AuthModule { }
