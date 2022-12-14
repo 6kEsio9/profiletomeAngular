@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IPost, IUser } from 'src/app/shared/interfaces';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ApiService } from '../api.service';
+import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-post',
@@ -11,8 +12,9 @@ import { ApiService } from '../api.service';
 export class PostComponent implements OnInit {
 
   @Input() post: IPost = <IPost>{};
-  @Input() isOwner: boolean = false;
   @Input() user: IUser | null = null;
+  
+  isOwner: boolean = false;
 
   owner: IUser = <IUser>{};
 
@@ -21,7 +23,9 @@ export class PostComponent implements OnInit {
   constructor(private authService: AuthService, private apiService: ApiService) { }
 
   likePost() {
-    if (this.user && this.user._id !== this.owner._id && !this.isLiked) {
+    console.log(this.user?._id);
+    console.log(this.owner._id);
+    if (this.user && this.user._id !== this.owner._id || !this.isLiked) {
       console.log('liked');
       this.apiService.likePost(this.user?._id, this.post._id).subscribe(res => console.log(res));
     }
@@ -31,6 +35,9 @@ export class PostComponent implements OnInit {
     this.authService.loadOneUser(this.post.owner).subscribe({
       next: (value) => {
         this.owner = value;
+        if(this.user && this.user._id === this.owner._id){
+          this.isOwner = true;
+        }
       },
       error: (err) => {
         console.log(err);

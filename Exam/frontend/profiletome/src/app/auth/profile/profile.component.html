@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="pd-right">
-                <button *ngIf="!isOwner && !isFriend || !auth" type="button"><img src="/assets/images/add-friends.png" alt="addfriendsImg">Add Friend</button>
+                <button *ngIf="canAdd" (click)="addFriend()" type="button"><img src="/assets/images/add-friends.png" alt="addfriendsImg">Add Friend</button>
         </div>
     </div>
 </div>
@@ -31,5 +31,5 @@
 </div>
 
 <ng-container *ngFor="let post of postList">
-    <app-post class="post-container" [post]="post"></app-post>
+    <app-post class="post-container" [user]="user" [post]="post"></app-post>
 </ng-container>

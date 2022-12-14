@@ -36,4 +36,8 @@ export class AuthService {
   login(email: string, password: string) {
     return this.httpClient.post<any>(apiUrl + '/users/login', { email, password });
   }
+
+  addFriend(userId: string, friendId: string){
+    return this.httpClient.get<any>(`${apiUrl}/friend/${userId}/${friendId}`);
+  }
 }

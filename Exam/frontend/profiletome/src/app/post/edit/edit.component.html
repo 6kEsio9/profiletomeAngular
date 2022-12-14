@@ -1,7 +1,7 @@
 <section id="create-page" class="register">
-    <form id="create-form">
+    <form id="create-form" [formGroup]="form" (ngSubmit)="editHandler()">
       <fieldset>
-        <legend>Post Form</legend>
+        <legend>Edit Form</legend>
         <p class="field">
           <label for="email">Post Picture</label>
           <span class="input">
@@ -10,9 +10,17 @@
               name="imageUrl"
               id="image"
               placeholder="https://"
+              required
+              value="post.imageUrl"
+              formControlName="imageUrl"
             />
           </span>
         </p>
+
+        <p class="error" *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.errors?.['required']">
+          Post picture is required!
+        </p>
+
         <p className="field">
           <label for="email">Caption</label>
           <span class="input">
@@ -21,6 +29,8 @@
               name="caption"
               id="cap"
               placeholder="Caption..."
+              value="post.caption"
+              formControlName="caption"
             />
           </span>
         </p>

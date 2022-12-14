@@ -9,6 +9,7 @@ import { PostRouter } from './post-routing-module';
 import { AppRoutingModule } from '../app-routing.module';
 import { PostComponent } from './post/post.component';
 import { ApiService } from '../api.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,9 @@ import { ApiService } from '../api.service';
     CommonModule,
     HttpClientModule,
     PostRouter,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     PostComponent

@@ -17,6 +17,6 @@
     <!-- if user owns the post -->
     <div class="owner-buttons" *ngIf="isOwner">
         <a routerLink="/posts/edit/{{post._id}}">Edit</a>
-        <a href="/posts/delete/{{post._id}}">Delete</a>
+        <a routerLink="/posts/delete/{{post._id}}">Delete</a>
     </div>
 </div>

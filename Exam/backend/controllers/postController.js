@@ -21,12 +21,16 @@ exports.getPosts = async (req, res) => {
 exports.createPost = async (req, res) => {
     const data = req.body;
 
-    const token = await jwtVerify(req.cookies['user'], secret);
+    console.log(req.headers['authorization']);
 
-    data.owner = token._id;
+    const token = await jwtVerify(req.headers['authorization'], secret);
+
+    console.log(token);
+
+    data.imageUrl.owner = token._id;
 
     try {
-        let createdPost = await postService.create(data);
+        let createdPost = await postService.create(data.imageUrl);
         res.status(200).json( createdPost )
         res.end();
     } catch (error) {

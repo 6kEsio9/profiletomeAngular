@@ -14,21 +14,13 @@ export class HomeComponent implements OnInit {
 
   user: IUser | null = null;
 
-  isOwner: boolean = false;
-
   constructor(private postService: ApiService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
     this.postService.loadPosts().subscribe({
       next: (value) => {
-        console.log(value);
-        value.map(x => {
-          if(this.user && this.user._id === x.owner){
-            this.isOwner = true;
-          }
-        })
-        this.postList = value;
+        this.postList = value.reverse();
       },
       error: (err) => {
         console.log(err);

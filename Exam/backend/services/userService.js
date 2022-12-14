@@ -30,7 +30,7 @@ exports.register = async ({ fullName, email, password, profileImg, profileCoverI
         password: hashedPassword
     })
 
-    let token = await jwtSign({ _id: createdUser._id, fullName: createdUser.fullName }, secret, { expiresIn: '3d' });
+    let token = await jwtSign({ _id: createdUser._id, fullName: createdUser.fullName, email: createdUser.email, profileImg: createdUser.profileImg, profileCoverImg: createdUser.profileCoverImg }, secret, { expiresIn: '3d' });
 
     return { token, createdUser };
 }
@@ -48,7 +48,7 @@ exports.login = async ({ email, password }) => {
         throw { message: 'Cannot find email or password.' };
     }
 
-    let token = await jwtSign({ _id: user._id, email: user.email }, secret, { expiresIn: '3d' });
+    let token = await jwtSign({ _id: user._id, fullName: user.fullName, email: user.email, profileImg: user.profileImg, profileCoverImg: user.profileCoverImg }, secret, { expiresIn: '3d' });
 
     return { token, user };
 };

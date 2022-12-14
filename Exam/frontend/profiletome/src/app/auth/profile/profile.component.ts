@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
 
   isFriend: boolean = false;
 
+  canAdd: boolean = false;
+
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private apiService: ApiService) { }
 
   ngOnInit(): void {
@@ -30,11 +32,29 @@ export class ProfileComponent implements OnInit {
         next: (value) => {
           console.log(value);
           this.user = value;
-          if(value){
+          if (value) {
             console.log(value._id);
-            console.log(this.auth?._id);
             value._id === this.auth?._id ? this.isOwner = true : this.isOwner = false;
             value.friends.map(x => x === this.auth?._id ? this.isFriend = true : this.isFriend = false);
+            if(this.auth){
+              console.log(this.isOwner);
+              console.log(this.isFriend);
+              if(!this.isFriend){
+                this.canAdd = true;
+                if(this.isOwner){
+                  this.canAdd = false;
+                }
+              }
+            }
+            this.apiService.loadPosts().subscribe({
+              next: (value) => {
+                console.log(value);
+                this.postList = value.filter(x => x.owner === this.user?._id).reverse();
+              },
+              error: (err) => {
+                console.log(err);
+              }
+            })
           }
         },
         error: (err) => {
@@ -42,18 +62,12 @@ export class ProfileComponent implements OnInit {
         }
       });
     })
+  }
 
-    this.apiService.loadPosts().subscribe({
-      next: (value) => {
-        console.log(value);
-        this.postList = value.filter(x => x.owner === this.user?._id);
-      },
-      error: (err) => {
-        console.log(err);
-      } 
-    })
-
-    console.log(this.isOwner)
+  addFriend() {
+    if (this.auth && this.user) {
+      this.authService.addFriend(this.auth?._id, this.user?._id).subscribe(res => console.log(res));
+    }
   }
 
 }

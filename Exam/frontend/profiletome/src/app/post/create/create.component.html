@@ -1,5 +1,5 @@
 <section id="create-page" class="register">
-    <form id="create-form">
+    <form id="create-form" #form="ngForm" (ngSubmit)="createHandler(form)">
       <fieldset>
         <legend>Post Form</legend>
         <p class="field">
@@ -10,9 +10,19 @@
               name="imageUrl"
               id="image"
               placeholder="https://"
+              ngModel
+              required
+              #imageUrlInput="ngModel"
             />
           </span>
         </p>
+
+        <ng-container *ngIf="imageUrlInput.touched">
+          <p class="error" *ngIf="imageUrlInput.errors?.['required']">
+            Post picture is required!
+          </p>
+        </ng-container>
+
         <p className="field">
           <label for="email">Caption</label>
           <span class="input">
@@ -21,10 +31,14 @@
               name="caption"
               id="cap"
               placeholder="Caption..."
+              ngModel
+              #captionInput="ngModel"
             />
           </span>
         </p>
+
         <input
+          [disabled]="form.invalid"
           class="button submit"
           type="submit"
           defaultValue="Register"

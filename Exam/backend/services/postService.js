@@ -7,7 +7,7 @@ exports.create = (data) => Post.create(data);
 
 exports.edit = (postId, data) => Post.findByIdAndUpdate(postId, data);
 
-exports.delete = (postId) => Post.findByUpdateAndDelete(postId);
+exports.delete = (postId) => Post.findByIdAndDelete(postId);
 
 exports.getOne = (postId) => Post.findById(postId);
 

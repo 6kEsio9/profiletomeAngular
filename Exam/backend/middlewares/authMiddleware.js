@@ -6,7 +6,7 @@ const secret = '90w45gh783fvtn';
 const jwtVerify = promisify(jwt.verify);
 
 exports.auth = async (req, res, next) => {
-    let token = req.cookies['user'];
+    let token = req.headers['authorization'];
     if(token){
         try{
             let decodedToken = await jwtVerify(token, secret);
@@ -22,7 +22,7 @@ exports.auth = async (req, res, next) => {
 };
 
 exports.isAuth = (req, res, next) => {
-    const user = req.cookies['user'];
+    const user = req.headers['authorization'];
 
     if(!user){
         return res.redirect('/404');
