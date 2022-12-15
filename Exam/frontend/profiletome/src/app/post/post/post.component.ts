@@ -13,7 +13,7 @@ export class PostComponent implements OnInit {
 
   @Input() post: IPost = <IPost>{};
   @Input() user: IUser | null = null;
-  
+
   isOwner: boolean = false;
 
   owner: IUser = <IUser>{};
@@ -38,6 +38,8 @@ export class PostComponent implements OnInit {
         if(this.user && this.user._id === this.owner._id){
           this.isOwner = true;
         }
+        console.log(this.owner);
+        console.log(this.user);
       },
       error: (err) => {
         console.log(err);

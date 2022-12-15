@@ -31,5 +31,5 @@
 </div>
 
 <ng-container *ngFor="let post of postList">
-    <app-post class="post-container" [user]="user" [post]="post"></app-post>
+    <app-post class="post-container" [user]="auth" [post]="post"></app-post>
 </ng-container>
