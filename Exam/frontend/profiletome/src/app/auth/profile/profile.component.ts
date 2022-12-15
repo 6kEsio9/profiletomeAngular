@@ -33,15 +33,15 @@ export class ProfileComponent implements OnInit {
           console.log(value);
           this.user = value;
           if (value) {
-            console.log(value._id);
+            console.log(value);
             value._id === this.auth?._id ? this.isOwner = true : this.isOwner = false;
-            value.friends.map(x => x === this.auth?._id ? this.isFriend = true : this.isFriend = false);
-            if(this.auth){
+            this.auth?.friends.includes(value._id) ? this.isFriend = true : this.isFriend = false;
+            if (this.auth) {
               console.log(this.isOwner);
               console.log(this.isFriend);
-              if(!this.isFriend){
+              if (!this.isFriend) {
                 this.canAdd = true;
-                if(this.isOwner){
+                if (this.isOwner) {
                   this.canAdd = false;
                 }
               }
