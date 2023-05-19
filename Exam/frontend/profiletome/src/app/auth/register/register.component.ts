@@ -36,6 +36,7 @@ export class RegisterComponent {
     const { fullName, email, pass: {password, repeatPassword} = {}, profileImg, profileCoverImg} = this.form.value;
     this.authService.register(fullName!, email!, password!, repeatPassword!, profileImg!, profileCoverImg!).subscribe({
       next: ({ token, _id, email, fullName, profileImg, friends, profileCoverImg }) => {
+        console.log('logged');
         this.cookieService.set('user', JSON.stringify({ token, _id, email, fullName, profileImg, friends, profileCoverImg }));
         this.router.navigate(['/']);
       },

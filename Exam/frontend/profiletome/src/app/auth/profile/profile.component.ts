@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   user: IUser | null = null;
   postList: IPost[] | null = null;
 
-  auth: IUser | null = null;
+  auth: IUser = <IUser>{};
 
   isOwner: boolean = false;
 

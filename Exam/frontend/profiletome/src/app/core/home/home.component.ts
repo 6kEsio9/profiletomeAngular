@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   postList: IPost[] | null = null;
 
-  user: IUser | null = null;
+  user: IUser = <IUser>{};
 
   constructor(private postService: ApiService, private authService: AuthService) { }
 

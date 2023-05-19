@@ -12,7 +12,7 @@ import { IfStmt } from '@angular/compiler';
 export class PostComponent implements OnInit {
 
   @Input() post: IPost = <IPost>{};
-  @Input() user: IUser | null = null;
+  @Input() user: IUser = <IUser>{};
 
   isOwner: boolean = false;
 
@@ -20,15 +20,21 @@ export class PostComponent implements OnInit {
 
   isLiked: boolean = false;
 
+  canLike: boolean = false;
+
   constructor(private authService: AuthService, private apiService: ApiService) { }
 
   likePost() {
-    console.log(this.user?._id);
-    console.log(this.owner._id);
-    if (this.user && this.user._id !== this.owner._id || !this.isLiked) {
-      console.log('liked');
+    if(this.user){
+      if(this.user._id !== this.owner._id){
+        this.canLike = true;
+        if(this.isLiked == true){
+          this.canLike = false;
+        }
+      }
       this.apiService.likePost(this.user?._id, this.post._id).subscribe(res => console.log(res));
     }
+    
   }
 
   ngOnInit(): void {
@@ -46,7 +52,7 @@ export class PostComponent implements OnInit {
       }
     })
 
-    this.post.likedUsers.map(x => x === this.user?._id ? this.isLiked = true : this.isLiked = false);
+    this.post.likedUsers.includes(this.user?._id) ? this.isLiked = true : this.isLiked = false;
   }
 
 }
